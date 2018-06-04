@@ -1,0 +1,10 @@
+{
+  "menuItemCapturePicture": {
+    "message": "Zapisz obraz",
+    "description": ""
+  },
+  "menuItemCaptureLinkContent": {
+    "message": "Zapisz zawartość linku",
+    "description": ""
+  }
+}
