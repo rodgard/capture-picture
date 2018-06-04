@@ -46,20 +46,25 @@ The click event listener, where we perform the appropriate action given the
 ID of the menu item that was clicked.
 */
 browser.menus.onClicked.addListener((info, tab) => {
-    switch (info.menuItemId) {
-        case "capture-image":
-            browser.downloads.download({
-                filename: "memfolder/" + info.srcUrl.substring(info.srcUrl.lastIndexOf('/')+1),
-                url: info.srcUrl
-            });
-        break;
-        case "capture-content":
-            browser.downloads.download({
-                filename: "memfolder/" + info.linkUrl.substring(info.linkUrl.lastIndexOf('/')+1),
-                url: info.linkUrl
-            });
-        break;
-    }
+    var gettingItem = browser.storage.sync.get('folder');
+    var path = "";
+    gettingItem.then((res) => {
+        path = res.folder;
+        switch (info.menuItemId) {
+            case "capture-image":
+                browser.downloads.download({
+                    filename: path + info.srcUrl.substring(info.srcUrl.lastIndexOf('/')+1),
+                    url: info.srcUrl
+                });
+            break;
+            case "capture-content":
+                browser.downloads.download({
+                    filename: path + info.linkUrl.substring(info.linkUrl.lastIndexOf('/')+1),
+                    url: info.linkUrl
+                });
+            break;
+        }
+    });
 });
 
 browser.runtime.onInstalled.addListener(() => {
