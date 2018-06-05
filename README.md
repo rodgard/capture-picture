@@ -2,4 +2,4 @@
 
 Mozilla Firefox Add-on
 
-Saves pictures from www sites to folder defined by the user from context menu by just two clicks.
+Saves pictures from www sites to folder defined by the user in only two clicks.
